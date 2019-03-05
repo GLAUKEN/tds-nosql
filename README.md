@@ -1,1 +1,1 @@
-This repository contains practice works of my NoSQL course
+This repository contains practice works of my NoSQL course at ESILV
