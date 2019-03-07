@@ -6,6 +6,8 @@ info.MongoClient.connect(info.uri, { useNewUrlParser: true }, function(err, db) 
     
     let database = db.db(info.dataB);
 
+    // Doesn't actually work but that's the idea
+
     database.collection(info.coll).aggregate(
         [
             { $group: { _id: "$age" } },

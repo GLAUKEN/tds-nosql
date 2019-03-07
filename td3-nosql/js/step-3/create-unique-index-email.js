@@ -13,8 +13,6 @@ info.MongoClient.connect(info.uri, { useNewUrlParser: true }, function(err, db) 
 
     if (err) throw err;
     
-    let database = db.db(info.dataB);
-
     db.db(info.dataB).collection(info.coll).createIndex({ "email": 1 }, {unique: true});
     console.log("Index created!");
 

@@ -10,7 +10,10 @@ info.MongoClient.connect(info.uri, { useNewUrlParser: true }, function(err, db) 
         [
             { $group: { _id: "$age" } }
         ]
-    );
+    ).toArray(function(err, result) {
+        if (err) throw err;
+        console.log(result);
+    });
 
     db.close();
 });
