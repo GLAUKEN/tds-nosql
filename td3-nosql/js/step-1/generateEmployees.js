@@ -1,4 +1,4 @@
-const info = require('./config');
+const info = require('../config');
 
 function generateRandomName() {
     let names = ["Dominique", "Assan", "David", "Mamadou", "Kradouk", "Sarah",
@@ -79,15 +79,20 @@ function generateRandomCity() {
     return cities[rand];
 }
 
+function generateRandomDistrict() {
+    return Math.floor(Math.random() * 20 + 1);
+}
+
 function generateRandomAddress() {
     let address = {
+        "city": generateRandomCity(),
+        "district": generateRandomDistrict(),
         "phone": generateRandomPhoneNumber()
     }
     if (Math.floor(Math.random() * 2) === 0) {
         address.street = {
             "num": generateRandomStreetNum(),
             "type": generateRandomStreetType(),
-            "city": generateRandomCity()
         }
     }
     return address;
