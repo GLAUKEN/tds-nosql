@@ -94,6 +94,17 @@ function generatePremium() {
     };
 }
 
+function generateEmailClient() {
+    let clients = ["gmail", "yahoo", "devinci", "orange", "free"];
+    return clients[Math.floor(Math.random() * clients.length)];
+}
+
+function generateEmail(firstname, name) {
+    let number = Math.floor(Math.random() * 1000000);
+    let client = generateEmailClient();
+    return firstname + "." + name + number.toString() + "@" + client + ".com";
+}
+
 function generateBuyer() {
     let buyer = {
         Name               : generateName(),
@@ -101,8 +112,9 @@ function generateBuyer() {
         CreditCard         : generateCreditCard(),
         PersonnalAddress   : generateAddress(),
     }
-
+    buyer.Email = generateEmail(buyer.Firstname, buyer.Name);
     if (hasShippingAddress()) buyer.ShippingAddress = generateAddress();
+    if (isPremium())          buyer.Premium         = generatePremium();
     
     return buyer;
 }

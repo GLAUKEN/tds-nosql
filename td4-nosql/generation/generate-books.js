@@ -196,8 +196,19 @@ function generateBuyerVote() {
     return Math.floor(Math.random() * 11);
 }
 
+function generateEmailClient() {
+    let clients = ["gmail", "yahoo", "devinci", "orange", "free"];
+    return clients[Math.floor(Math.random() * clients.length)];
+}
+
+function generateEmail(firstname, name) {
+    let number = Math.floor(Math.random() * 1000000);
+    let client = generateEmailClient();
+    return firstname + "." + name + number.toString() + "@" + client + ".com";
+}
+
 function generateSeller(id) {
-    return {
+    let seller = {
         Id                 : id,
         Name               : generateName(),
         Firstname          : generateFirstname(),
@@ -205,6 +216,8 @@ function generateSeller(id) {
         PersonnalAddress   : generateAddress(),
         Books              : []
     }
+    seller.Email = generateEmail(seller.Firstname, seller.Name);
+    return seller;
 }
 
 function generateBook(sellerId) {
@@ -221,7 +234,7 @@ function generateBook(sellerId) {
         Weight       : generateWeight(),
         Size         : generateSize(),
         SellerComment: generateSellerComment(),
-    };  
+    };
 
     if (isInPromotion())   book.Promotion    = generatePromotion(book.Price);
     if (hasBuyerComment()) book.BuyerComment = [generateBuyerComment()];
