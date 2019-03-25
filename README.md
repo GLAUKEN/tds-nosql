@@ -1,4 +1,4 @@
-## This repository contains my practice works of my NoSQL course (mongodb) at ESILV
+## This repository contains my practice works of my NoSQL courses (mongodb) at ESILV
 
 I developed all queries and documents generation with [Node.js](https://nodejs.org/en/) 
 
